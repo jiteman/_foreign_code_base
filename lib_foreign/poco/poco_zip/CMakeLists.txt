@@ -1,3 +1,5 @@
+cmake_minimum_required( VERSION 3.7.1 )
+
 project( poco_zip_lib C CXX )
 
 include( ${JMSF_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
