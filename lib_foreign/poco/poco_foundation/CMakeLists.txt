@@ -17,10 +17,11 @@ if( WIN32 )
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4244" ) # '': conversion from '' to '', possible loss of data
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4266" ) # '': no override available for virtual member function from base ''; function is hidden
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4324" ) # '': structure was padded due to alignment specifier
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4388" ) # '<': signed/unsigned mismatch	
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4388" ) # '<': signed/unsigned mismatch
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4619" ) # #pragma warning: there is no warning number ''
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4668" ) # '' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4702" ) # unreachable code
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd5045" ) # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
 
@@ -36,7 +37,7 @@ endif()
 # include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 #	${JMSD_PLATFORM_SOURCES}
-	${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include )
+${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
