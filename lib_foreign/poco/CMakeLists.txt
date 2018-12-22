@@ -10,7 +10,7 @@ set( JMSD_POCO_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_poco_cmake_settings )
 
 
 add_subdirectory( poco_foundation )
-# add_subdirectory( poco_json )
+add_subdirectory( poco_json )
 # add_subdirectory( poco_xml )
 # add_subdirectory( poco_util )
 

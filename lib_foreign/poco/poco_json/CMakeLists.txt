@@ -2,8 +2,10 @@ cmake_minimum_required( VERSION 3.7.1 )
 
 project( poco_json_lib C CXX )
 
-include( ${JMSF_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
-include( ${JMSF_CMAKE_SETTINGS_PATH}/reset-all-settings.cmake )
+include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
+
+include( ${JMSD_CMAKE_SETTINGS_PATH}/macroses/macroses.cmake )
+
 
 if( WIN32 )
 	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
@@ -24,32 +26,48 @@ if( WIN32 )
 endif()
 
 
-# dependencies section
-include_directories( ${poco_foundation_lib_DEPENDENCY_DIRS} )
-#include_directories( ${al_std_DEPENDENCY_DIRS} )
-#add_definitions( ${google_test_lib_DEFINITIONS} )
-#message( STATUS "[JMSD] get google_test_lib dependency_dir: ${google_test_lib_DEPENDENCY_DIRS}" )
-#message( STATUS "[JMSD] get google_test_lib defintions: ${google_test_lib_DEFINITIONS}" )
+# include dependencies
+set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
+	# ${JMSD_PLATFORM_SOURCES}
+	${poco_foundation_lib_DEPENDENCY_DIRS}
+	${JMSD_POCO_SOURCE_ROOT_PATH}/JSON/include )
+list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
+include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
-# this project header section
-include_directories( ${PROJECT_SOURCE_DIR}/include ) # this
 
 # this project headers and sources enumeration section
-file ( GLOB_RECURSE header_and_source_files ${PROJECT_SOURCE_DIR}/include/*.h* ${PROJECT_SOURCE_DIR}/src/*.c* )
+file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/JSON/include/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/JSON/src/*.c* )
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
-add_definitions( -DJSON_EXPORTS )
+
+
+set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
+	-DJSON_EXPORTS )
+JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
+JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
+set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
+	"" )
+JMSD_LIST_TO_STRING( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
+JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
+add_definitions( "${${PROJECT_NAME}_BUILD_DEFINITIONS_VAR}" )
+
 
 # Required on Unix OS family to be able to be linked into shared libraries.
 set_target_properties( ${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON )
 set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 2.0.0 )
 set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 2.0 )
 
+
 # project target section
 target_link_libraries( ${PROJECT_NAME} poco_foundation_lib )
 
-# Expose public includes to other subprojects through cache variable.
-set( ${PROJECT_NAME}_DEPENDENCY_DIRS ${PROJECT_SOURCE_DIR}/include CACHE INTERNAL "[JMSD] ${PROJECT_NAME}_DEPENDENCY_DIRS" FORCE )
-set( ${PROJECT_NAME}_DEFINITIONS "" CACHE INTERNAL "[JMSD] ${PROJECT_NAME}_DEFINITIONS" FORCE )
+# project target section
+set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+	poco_foundation_lib )
+list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
+target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
-include( ${JMSF_CMAKE_SETTINGS_PATH}/verbosity/project-dependency-footer.cmake )
-include( ${JMSF_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
+
+# Expose public includes to other subprojects through cache variable.
+include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
+
+include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
