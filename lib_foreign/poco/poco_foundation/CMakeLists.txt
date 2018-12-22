@@ -83,6 +83,8 @@ if ( UNIX )
 elseif( WIN32 )
 	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "EventLogChannel" )
 	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WindowsConsoleChannel" )
+else()
+	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
 JMSD_REMOVE_HEADER_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include/Poco" )
@@ -90,7 +92,9 @@ JMSD_REMOVE_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_F
 
 # message( STATUS "[POCO] file list after: " ${header_and_source_files} )
 
-JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/pocomsg.mc )
+if( WIN32 )
+	JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/pocomsg.mc )
+endif()
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
@@ -114,10 +118,13 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 2.0 )
 
 <<<<<<< HEAD
 # project target section
+<<<<<<< HEAD
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
 	"Iphlpapi.lib" )
 =======
 ## project target section
+=======
+>>>>>>> bae9b627e4132725545d2b9c6bdc6939c92338f5
 if ( WIN32 )
 	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
 		"Iphlpapi.lib" )
@@ -130,7 +137,10 @@ else()
 	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
+<<<<<<< HEAD
 >>>>>>> cc5e87f... poco JSON library is builded (on windows)
+=======
+>>>>>>> bae9b627e4132725545d2b9c6bdc6939c92338f5
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
