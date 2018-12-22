@@ -116,15 +116,6 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 2.0.0 )
 set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 2.0 )
 
 
-<<<<<<< HEAD
-# project target section
-<<<<<<< HEAD
-set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	"Iphlpapi.lib" )
-=======
-## project target section
-=======
->>>>>>> bae9b627e4132725545d2b9c6bdc6939c92338f5
 if ( WIN32 )
 	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
 		"Iphlpapi.lib" )
@@ -137,10 +128,7 @@ else()
 	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
-<<<<<<< HEAD
->>>>>>> cc5e87f... poco JSON library is builded (on windows)
-=======
->>>>>>> bae9b627e4132725545d2b9c6bdc6939c92338f5
+
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
