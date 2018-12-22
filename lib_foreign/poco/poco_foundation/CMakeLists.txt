@@ -31,6 +31,26 @@ if( WIN32 )
 	#message( STATUS "[JMSD] BUILDING: ${PROJECT_NAME} C++ flags before: ${CMAKE_CXX_FLAGS}" )
 	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
 	#message( STATUS "[JMSD] BUILDING: ${PROJECT_NAME} C++ flags after: ${CMAKE_CXX_FLAGS}" )
+elseif( UNIX )
+	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
+
+	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd" ) #
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-unused-parameter" ) # unused parameter ‘’
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-implicit-fallthrough" ) # this statement may fall through
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-sign-compare" ) # comparison of integer expressions of different signedness: ‘’ and ‘’ {aka ‘’}
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-vla" ) # ISO C++ forbids variable length array ‘’
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-float-equal" ) # comparing floating point with == or != is unsafe
+
+	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
+
+	string( REPLACE "-Wconversion" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # conversion from '' to '' may change value
+	string( REPLACE "-Wcast-qual" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # cast from type ‘’ to type ‘’ casts away qualifiers
+	string( REPLACE "-Wmissing-declarations" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # no previous declaration for ‘’
+	string( REPLACE "-Wshadow" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # declaration of '' shadows a member of ''
+
+	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
+else()
+	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
 
@@ -65,6 +85,8 @@ if ( UNIX )
 elseif( WIN32 )
 	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "EventLogChannel" )
 	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WindowsConsoleChannel" )
+else()
+	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
 JMSD_REMOVE_HEADER_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include/Poco" )
@@ -72,7 +94,9 @@ JMSD_REMOVE_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_F
 
 # message( STATUS "[POCO] file list after: " ${header_and_source_files} )
 
-JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/pocomsg.mc )
+if( WIN32 )
+	JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/pocomsg.mc )
+endif()
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
@@ -95,8 +119,18 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 2.0 )
 
 
 # project target section
-set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	"Iphlpapi.lib" )
+if ( WIN32 )
+	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+		"Iphlpapi.lib" )
+elseif( UNIX )
+	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+		"pthread"
+		"dl"
+		"rt" )
+else()
+	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
+endif()
+
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
