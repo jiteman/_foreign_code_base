@@ -1,0 +1,3 @@
+[submodule "lib_foreign_sources/poco"]
+	path = lib_foreign_sources/poco
+	url = https://github.com/jiteman/jmsd_foreign_poco.git
