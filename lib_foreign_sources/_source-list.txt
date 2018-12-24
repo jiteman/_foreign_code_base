@@ -1,2 +1,2 @@
-poco: develop -> origin at 2018-12-19 21:46:14 +0100
+poco:
 	openssl (pocoproject): 
