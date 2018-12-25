@@ -10,3 +10,6 @@
 [submodule "lib_foreign_sources/cppunit"]
 	path = lib_foreign_sources/cppunit
 	url = https://github.com/jiteman/jmsd_foreign_cppunit.git
+[submodule "lib_foreign_sources/cppunit_lite_zeil"]
+	path = lib_foreign_sources/cppunit_lite_zeil
+	url = https://github.com/jiteman/jmsd_foreign_cppunit_lite_zeil.git
