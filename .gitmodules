@@ -7,3 +7,6 @@
 [submodule "lib_foreign_sources/catch2"]
 	path = lib_foreign_sources/catch2
 	url = https://github.com/jiteman/jmsd_foreign_catch_2.git
+[submodule "lib_foreign_sources/cppunit"]
+	path = lib_foreign_sources/cppunit
+	url = https://github.com/jiteman/jmsd_foreign_cppunit.git
