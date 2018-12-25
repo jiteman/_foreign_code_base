@@ -15,7 +15,7 @@ add_subdirectory( poco_xml )
 add_subdirectory( poco_util )
 
 add_subdirectory( poco_seven_zip )
-# add_subdirectory( poco_zip )
+add_subdirectory( poco_zip )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
