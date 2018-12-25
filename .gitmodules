@@ -16,3 +16,6 @@
 [submodule "lib_foreign_sources/google_test_and_mock"]
 	path = lib_foreign_sources/google_test_and_mock
 	url = https://github.com/jiteman/jmsd_foreign_googletest.git
+[submodule "lib_foreign_sources/cppunitlite"]
+	path = lib_foreign_sources/cppunitlite
+	url = https://github.com/jiteman/jmsd_foreign_cppunitlite.git
