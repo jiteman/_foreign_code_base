@@ -4,3 +4,6 @@
 [submodule "lib_foreign_sources/eastl"]
 	path = lib_foreign_sources/eastl
 	url = https://github.com/jiteman/jmsd_foreign_eastl.git
+[submodule "lib_foreign_sources/catch2"]
+	path = lib_foreign_sources/catch2
+	url = https://github.com/jiteman/jmsd_foreign_catch_2.git
