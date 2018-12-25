@@ -14,7 +14,7 @@ add_subdirectory( poco_json )
 add_subdirectory( poco_xml )
 add_subdirectory( poco_util )
 
-# add_subdirectory( poco_seven_zip )
+add_subdirectory( poco_seven_zip )
 # add_subdirectory( poco_zip )
 
 
