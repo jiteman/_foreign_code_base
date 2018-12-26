@@ -2,8 +2,8 @@ cmake_minimum_required( VERSION 3.7.1 )
 
 project( poco_foundation_lib C CXX )
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
+include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/macroses/macroses.cmake )
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/macroses/poco-macroses.cmake )
 
@@ -99,6 +99,7 @@ endif()
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
+## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
 	-DFoundation_EXPORTS )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
@@ -110,12 +111,13 @@ JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
 add_definitions( "${${PROJECT_NAME}_BUILD_DEFINITIONS_VAR}" )
 
 
-## Required on Unix OS family to be able to be linked into shared libraries.
+## required to be able to be linked into shared libraries.
 set_target_properties( ${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON )
 set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 2.0.0 )
 set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 2.0 )
 
 
+## project target section
 if ( WIN32 )
 	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
 		"Iphlpapi.lib" )
@@ -128,12 +130,10 @@ else()
 	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
-
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
 
 ## Expose public includes to other subprojects through cache variable.
 include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
-
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )

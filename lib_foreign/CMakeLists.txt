@@ -2,6 +2,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 
 project( lib_foreign_poco )
 
+
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
 
 

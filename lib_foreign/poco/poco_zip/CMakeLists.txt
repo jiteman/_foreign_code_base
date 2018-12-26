@@ -2,8 +2,8 @@ cmake_minimum_required( VERSION 3.7.1 )
 
 project( poco_zip_lib C CXX )
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
+include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/macroses/macroses.cmake )
 
 
@@ -57,6 +57,7 @@ file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Zip/in
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
+## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
 	-DZip_EXPORTS
 	-DPOCO_NO_AUTOMATIC_LIBS )
@@ -69,7 +70,7 @@ JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
 add_definitions( "${${PROJECT_NAME}_BUILD_DEFINITIONS_VAR}" )
 
 
-## Required on Unix OS family to be able to be linked into shared libraries.
+## required to be able to be linked into shared libraries.
 set_target_properties( ${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON )
 set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 2.0.0 )
 set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 2.0 )
@@ -84,5 +85,4 @@ target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
 ## Expose public includes to other subprojects through cache variable.
 include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
-
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
