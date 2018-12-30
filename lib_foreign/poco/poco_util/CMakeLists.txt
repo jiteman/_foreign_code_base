@@ -24,21 +24,20 @@ if( WIN32 )
 	string( REPLACE "/Za" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # disable language extensions: (off)
 	string( REPLACE "/Zc:strictStrings" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # disable string-literal to [char|wchar_t]* conversion (off by default)
 
-	#message( STATUS "[JMSD] BUILDING: ${PROJECT_NAME} C++ flags before: ${CMAKE_CXX_FLAGS}" )
 	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
-	#message( STATUS "[JMSD] BUILDING: ${PROJECT_NAME} C++ flags after: ${CMAKE_CXX_FLAGS}" )
 elseif( UNIX )
-	# set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
+	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
 
-	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-sign-compare" ) # comparison of integer expressions of different signedness: ‘’ and ‘’ {aka ‘’}
-	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-float-equal" ) # comparing floating point with == or != is unsafe
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-unused-parameter" ) # unused parameter ''
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-sign-compare" ) # comparison of integer expressions of different signedness: '' and '' {aka ''}
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-float-equal" ) # comparing floating point with == or != is unsafe
 
-	# tring( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
+	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
 
-	# string( REPLACE "-Wconversion" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # conversion from '' to '' may change value
-	# string( REPLACE "-Wshadow" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # declaration of '' shadows a member of ''
+	string( REPLACE "-Wconversion" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # conversion from '' to '' may change value
+	string( REPLACE "-Wshadow" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # declaration of '' shadows a member of ''
 
-	# set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
+	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
 
 	# set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format" )
 else()
@@ -59,6 +58,22 @@ include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 # this project headers and sources enumeration section
 file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Util/include/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Util/src/*.c* )
+
+set( PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WinRegistryConfiguration;WinRegistryKey;WinService" )
+
+if ( UNIX )
+	## list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "SyslogChannel" )
+elseif( WIN32 )
+	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WinRegistryConfiguration" )
+	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WinRegistryKey" )
+	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WinService" )
+else()
+	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
+endif()
+
+JMSD_REMOVE_HEADER_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Util/include/Poco" )
+JMSD_REMOVE_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Util/src" )
+
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
