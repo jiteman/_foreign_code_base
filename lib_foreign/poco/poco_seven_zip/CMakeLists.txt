@@ -49,8 +49,16 @@ list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
+## include internal dependencies
+include_directories( ${JMSD_POCO_SOURCE_ROOT_PATH}/SevenZip/7z_bundled )
+
+
 ## this project headers and sources enumeration section
-file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/SevenZip/include/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/SevenZip/src/*.c* )
+file( GLOB_RECURSE header_and_source_files
+	${JMSD_POCO_SOURCE_ROOT_PATH}/SevenZip/include/*.h*
+	${JMSD_POCO_SOURCE_ROOT_PATH}/SevenZip/src/*.c*
+	${JMSD_POCO_SOURCE_ROOT_PATH}/SevenZip/7z_bundled/*.h*
+	${JMSD_POCO_SOURCE_ROOT_PATH}/SevenZip/7z_bundled/*.c* )
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
