@@ -1,4 +1,4 @@
-JMSD_CMAKE_CURRENT_FILE_IN( "${JMSD_FOREIGN_COMPONENT_NAME}-set-windows-compiler-settings.cmake" )
+JMSD_CMAKE_CURRENT_FILE_IN( "poco-common-set-windows-compiler-settings.cmake" )
 
 if ( WIN32 )
 	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
@@ -11,8 +11,8 @@ if ( WIN32 )
 
 	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
 else()
-	message( SEND_ERROR "[JMSD] ${JMSD_FOREIGN_COMPONENT_NAME} COMPILER SETTINGS: ${JMSD_FOREIGN_COMPONENT_NAME}-set-windows-compiler-settings.cmake is included while not on windows" )
+	message( SEND_ERROR "[JMSD] poco-common COMPILER SETTINGS: poco-common-set-windows-compiler-settings.cmake is included while not on windows" )
 
 endif()
 
-JMSD_CMAKE_CURRENT_FILE_OUT( "${JMSD_FOREIGN_COMPONENT_NAME}-set-windows-compiler-settings.cmake" )
+JMSD_CMAKE_CURRENT_FILE_OUT( "poco-common-set-windows-compiler-settings.cmake" )

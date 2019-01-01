@@ -1,4 +1,4 @@
-set( JMSD_FOREIGN_COMPONENT_NAME poco-foundation )
+set( JMSD_FOREIGN_COMPONENT_NAME poco-zip )
 
 JMSD_CMAKE_CURRENT_FILE_IN( "${JMSD_FOREIGN_COMPONENT_NAME}-set-compiler-settings.cmake" )
 

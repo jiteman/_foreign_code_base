@@ -6,6 +6,8 @@ project( poco_seven_zip_lib C CXX )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/macroses/macroses.cmake )
 
+include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-seven-zip-set-compiler-settings.cmake )
+
 
 if( WIN32 )
 	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
