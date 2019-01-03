@@ -23,13 +23,7 @@ if( WIN32 )
 
 	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
 elseif( UNIX )
-	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
 
-	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
-
-	string( REPLACE "-Wredundant-decls" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # redundant redeclaration of '' in same scope
-
-	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
 else()
 	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
