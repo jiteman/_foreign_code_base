@@ -9,31 +9,6 @@ include( ${JMSD_CMAKE_SETTINGS_PATH}/macroses/macroses.cmake )
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-util-set-compiler-settings.cmake )
 
 
-if( WIN32 )
-	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
-
-	## list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd" ) #
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4191" ) # 'reinterpret_cast': unsafe conversion from '' to ''. Calling this function through the result pointer may cause your program to fail
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4266" ) # '': no override available for virtual member function from base ''; function is hidden
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4388" ) # '<': signed/unsigned mismatch
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4619" ) # #pragma warning: there is no warning number ''
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4668" ) # '' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd5045" ) # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
-
-	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
-
-	## string( REPLACE "X" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) #
-	string( REPLACE "/Za" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # disable language extensions: (off)
-	string( REPLACE "/Zc:strictStrings" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # disable string-literal to [char|wchar_t]* conversion (off by default)
-
-	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
-elseif( UNIX )
-
-else()
-	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
-endif()
-
-
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	# ${JMSD_PLATFORM_SOURCES}

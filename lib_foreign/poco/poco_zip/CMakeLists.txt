@@ -9,30 +9,6 @@ include( ${JMSD_CMAKE_SETTINGS_PATH}/macroses/macroses.cmake )
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-zip-set-compiler-settings.cmake )
 
 
-if( WIN32 )
-	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
-
-	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd" ) #
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4127" ) # conditional expression is constant
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4242" ) # '': conversion from '' to '', possible loss of data
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4244" ) # '': conversion from '' to '', possible loss of data
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4389" ) # '==': signed/unsigned mismatch
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4619" ) # #pragma warning: there is no warning number ''
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4668" ) # '' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
-
-	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
-
-	# string( REPLACE "X" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) #
-	string( REPLACE "/Za" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) # disable language extensions: (off)
-
-	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
-elseif( UNIX )
-
-else()
-	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
-endif()
-
-
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	# ${JMSD_PLATFORM_SOURCES}
