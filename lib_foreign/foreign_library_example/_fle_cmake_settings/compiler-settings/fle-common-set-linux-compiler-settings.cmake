@@ -1,4 +1,4 @@
-JMSD_CMAKE_CURRENT_FILE_IN( "poco-common-set-linux-compiler-settings.cmake" )
+JMSD_CMAKE_CURRENT_FILE_IN( "${JMSD_FOREIGN_COMPONENT_BASE_NAME}-common-set-linux-compiler-settings.cmake" )
 
 if ( UNIX )
 	## set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
@@ -13,8 +13,8 @@ if ( UNIX )
 
 	## set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format" )
 else()
-	message( SEND_ERROR "[JMSD] poco-common COMPILER SETTINGS: poco-common-set-linux-compiler-settings.cmake is included while not on linux" )
+	message( SEND_ERROR "[JMSD] ${JMSD_FOREIGN_COMPONENT_BASE_NAME}-common COMPILER SETTINGS: ${JMSD_FOREIGN_COMPONENT_BASE_NAME}-common-set-linux-compiler-settings.cmake is included while not on linux" )
 
 endif()
 
-JMSD_CMAKE_CURRENT_FILE_OUT( "poco-common-set-linux-compiler-settings.cmake" )
+JMSD_CMAKE_CURRENT_FILE_OUT( "${JMSD_FOREIGN_COMPONENT_BASE_NAME}-common-set-linux-compiler-settings.cmake" )
