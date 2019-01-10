@@ -1,9 +1,9 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( foreign_library_example C CXX )
+project( fle C CXX )
 
 
-set( JMSD_FLE_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/foreign_library_example_sources )
+set( JMSD_FLE_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/fle_sources )
 set( JMSD_FLE_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_fle_cmake_settings )
 
 
@@ -27,7 +27,7 @@ add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	-DJMSD_FOREIGN_LIBRARY_EXAMPLE_SHARED_INTERFACE_INTERNAL )
+	-DJMSD_FLE_SHARED_INTERFACE_INTERNAL )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
@@ -39,8 +39,8 @@ add_definitions( "${${PROJECT_NAME}_BUILD_DEFINITIONS_VAR}" )
 
 ## required to be able to be linked into shared libraries.
 set_target_properties( ${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON )
-set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 2.0.0 )
-set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 2.0 )
+set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 0.1.0 )
+set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 
 ## project target section

@@ -1,38 +1,38 @@
 #pragma once
 
 
-#include "fle.h"
+#include "fles_first.h"
 
 
 namespace jmsd {
-namespace fle {
+namespace fles {
 
 
-class JMSD_FOREIGN_LIBRARY_EXAMPLE_SHARED_INTERFACE Base_class {
+class JMSD_FLES_FIRST_SHARED_INTERFACE Fles_first_class {
 
 public:	
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	char const *say_base_hello() const noexcept;
+	char const *say_hello_fles_first() const noexcept;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 public:
-	virtual ~Base_class() noexcept;
+	virtual ~Fles_first_class() noexcept;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Base_class() noexcept;
+	Fles_first_class() noexcept;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Base_class( const Base_class &another ) noexcept;
-	const Base_class &operator =( const Base_class &another ) noexcept;
+	Fles_first_class( const Fles_first_class &another ) noexcept;
+	const Fles_first_class &operator =( const Fles_first_class &another ) noexcept;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Base_class( Base_class &&another ) noexcept;
-	Base_class &operator =( Base_class &&another ) noexcept;
+	Fles_first_class( Fles_first_class &&another ) noexcept;
+	Fles_first_class &operator =( Fles_first_class &&another ) noexcept;
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 private:
@@ -47,5 +47,5 @@ private:
 
 
 
-} // namespace fle
+} // namespace fles
 } // namespace jmsd

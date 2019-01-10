@@ -1,50 +1,50 @@
-#include "fle_class.h"
+#pragma once
+
+
+#include "fle.h"
 
 
 namespace jmsd {
 namespace fle {
 
 
+class JMSD_FLE_SHARED_INTERFACE Fle_class {
+
+public:	
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-char const *Base_class::say_base_hello() const noexcept {
-	return "fle::base hello";
-}
+public:
+	char const *say_hello_fle() const noexcept;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-Base_class::~Base_class() noexcept
-{}
+public:
+	virtual ~Fle_class() noexcept;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Base_class::Base_class() noexcept
-{}
+public:
+	Fle_class() noexcept;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Base_class::Base_class( const Base_class &/*another*/ ) noexcept {
-}
-
-const Base_class &Base_class::operator =( const Base_class &another ) noexcept {
-	if ( &another == this ) return *this;
-
-	// copy
-	return *this;
-}
+public:
+	Fle_class( const Fle_class &another ) noexcept;
+	const Fle_class &operator =( const Fle_class &another ) noexcept;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Base_class::Base_class( Base_class &&/*another*/ ) noexcept {
-}
-
-Base_class &Base_class::operator =( Base_class &&another ) noexcept {
-	if ( &another == this ) return *this;
-
-	// move
-	return *this;
-}
+public:
+	Fle_class( Fle_class &&another ) noexcept;
+	Fle_class &operator =( Fle_class &&another ) noexcept;
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+private:
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+private:
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+private:
+
+};
+
 
 
 } // namespace fle

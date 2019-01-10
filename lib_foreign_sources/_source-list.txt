@@ -5,3 +5,6 @@ cppunit: 2018-10-12 21:34:07 +0200
 cppunit_lite_zeil: 2018-10-04 11:50:33 -0400
 google_test_and_mock: 2018-12-21 13:24:39 -0500
 cppunitlite: 2014-12-27 11:24:22 +1300
+
+fle: foreign library example
+fles: foreign library example set
