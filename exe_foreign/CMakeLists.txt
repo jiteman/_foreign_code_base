@@ -10,7 +10,7 @@ set( JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH ${PROJECT_SOURCE_DIR}/../lib_foreign_sour
 
 
 add_subdirectory( fee )
-add_subdirectory( fees )
+# add_subdirectory( fees )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )

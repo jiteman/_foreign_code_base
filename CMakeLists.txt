@@ -7,7 +7,7 @@ include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
 
 
 add_subdirectory( lib_foreign )
-# add_subdirectory( app_foreign )
+add_subdirectory( exe_foreign )
 # add_subdirectory( test_foreign )
 
 
