@@ -5,28 +5,27 @@ project( fles_second C CXX )
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
-include( ${JMSD_FLES_CMAKE_SETTINGS_PATH}/fles-second-set-compiler-settings.cmake )
+include( ${JMSD_FEES_CMAKE_SETTINGS_PATH}/fees-second-set-compiler-settings.cmake )
 
 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
-	${fles_first_DEPENDENCY_DIRS}
-	${JMSD_FLES_SOURCE_ROOT_PATH}/fles_second_sources/sources )
+	${JMSD_FEES_SOURCE_ROOT_PATH}/fees_second_sources/sources )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files
-	${JMSD_FLES_SOURCE_ROOT_PATH}/fles_second_sources/sources/*.h*
-	${JMSD_FLES_SOURCE_ROOT_PATH}/fles_second_sources/sources/*.c* )
-add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
+	${JMSD_FEES_SOURCE_ROOT_PATH}/fees_second_sources/sources/*.h*
+	${JMSD_FEES_SOURCE_ROOT_PATH}/fees_second_sources/sources/*.c* )
+add_executable( ${PROJECT_NAME} ${header_and_source_files} )
 
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	-DJMSD_FLES_SECOND_SHARED_INTERFACE_INTERNAL )
+	"" )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
@@ -44,7 +43,7 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	fles_first )
+	"" )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
