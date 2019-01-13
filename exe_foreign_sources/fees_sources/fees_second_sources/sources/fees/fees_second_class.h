@@ -1,15 +1,15 @@
 #pragma once
 
 
-#include "dlt/dlt_class.h"
+#include "fles/fles_second_class.h"
 
 
 namespace jmsd {
-namespace et {
+namespace fees {
 
 
-class Executable_class :
-	public dlt::Derived_class
+class Fees_second_class :
+	public fles::Fles_second_class
 {
 
 public:
@@ -18,26 +18,26 @@ public:
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	char const *say_executable_hello() const noexcept;
+	char const *say_hello_fees_second() const noexcept;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 public:
 	// virtual Derived_class
-	~Executable_class() noexcept override = default;
+	~Fees_second_class() noexcept override = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Executable_class() noexcept = default;
+	Fees_second_class() noexcept = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 private:
-	Executable_class( const Executable_class &another ) noexcept = delete;
-	Executable_class &operator =( const Executable_class &another ) noexcept = delete;
+	Fees_second_class( const Fees_second_class &another ) noexcept = delete;
+	Fees_second_class &operator =( const Fees_second_class &another ) noexcept = delete;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 private:
-	Executable_class( Executable_class &&another ) noexcept = delete;
-	Executable_class &operator =( Executable_class &&another ) noexcept = delete;
+	Fees_second_class( Fees_second_class &&another ) noexcept = delete;
+	Fees_second_class &operator =( Fees_second_class &&another ) noexcept = delete;
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 private:
@@ -51,5 +51,5 @@ private:
 };
 
 
-} // namespace et
+} // namespace fees
 } // namespace jmsd

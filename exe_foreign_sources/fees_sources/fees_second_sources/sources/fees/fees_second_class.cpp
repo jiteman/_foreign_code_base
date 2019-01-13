@@ -1,55 +1,29 @@
-#pragma once
-
-
-#include "dlt/dlt_class.h"
+#include "fees_second_class.h"
 
 
 namespace jmsd {
-namespace et {
+namespace fees {
 
-
-class Executable_class :
-	public dlt::Derived_class
-{
-
-public:
-	// virtuals Derived_class
-	//~virtuals Derived_class
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-public:
-	char const *say_executable_hello() const noexcept;
+char const *Fees_second_class::say_hello_fees_second() const noexcept {
+	return "Fees_second_class::say_hello_fees_second";
+}
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-public:
-	// virtual Derived_class
-	~Executable_class() noexcept override = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-public:
-	Executable_class() noexcept = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-private:
-	Executable_class( const Executable_class &another ) noexcept = delete;
-	Executable_class &operator =( const Executable_class &another ) noexcept = delete;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-private:
-	Executable_class( Executable_class &&another ) noexcept = delete;
-	Executable_class &operator =( Executable_class &&another ) noexcept = delete;
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-private:
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-private:
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-private:
-
-};
 
 
-} // namespace et
+} // namespace fees
 } // namespace jmsd

@@ -10,7 +10,7 @@ namespace fle {
 
 class JMSD_FLE_SHARED_INTERFACE Fle_class {
 
-public:	
+public:
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
@@ -18,21 +18,21 @@ public:
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 public:
-	virtual ~Fle_class() noexcept;
+	virtual ~Fle_class() noexcept = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Fle_class() noexcept;
+	Fle_class() noexcept = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Fle_class( const Fle_class &another ) noexcept;
-	const Fle_class &operator =( const Fle_class &another ) noexcept;
+	Fle_class( const Fle_class &another ) noexcept = delete;
+	const Fle_class &operator =( const Fle_class &another ) noexcept = delete;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Fle_class( Fle_class &&another ) noexcept;
-	Fle_class &operator =( Fle_class &&another ) noexcept;
+	Fle_class( Fle_class &&another ) noexcept = delete;
+	Fle_class &operator =( Fle_class &&another ) noexcept = delete;
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 private:

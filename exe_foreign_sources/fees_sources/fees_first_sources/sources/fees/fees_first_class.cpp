@@ -1,13 +1,13 @@
-#include "et_class.h"
+#include "fees_first_class.h"
 
 
 namespace jmsd {
-namespace et {
+namespace fees {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-char const *Executable_class::say_executable_hello() const noexcept {
-	return "Executable_class::say_executable_hello";
+char const *Fees_first_class::say_hello_fees_first() const noexcept {
+	return "Fees_first_class::say_hello_fees_first";
 }
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -25,5 +25,5 @@ char const *Executable_class::say_executable_hello() const noexcept {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-} // namespace et
+} // namespace fees
 } // namespace jmsd

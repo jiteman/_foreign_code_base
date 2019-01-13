@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( fles_second C CXX )
+project( fees_second C CXX )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
@@ -11,6 +11,7 @@ include( ${JMSD_FEES_CMAKE_SETTINGS_PATH}/fees-second-set-compiler-settings.cmak
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
+	${fles_second_DEPENDENCY_DIRS}
 	${JMSD_FEES_SOURCE_ROOT_PATH}/fees_second_sources/sources )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
@@ -43,7 +44,8 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	"" )
+	${fles_second_DEPENDENCY_LIBS}
+	fles_second )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 

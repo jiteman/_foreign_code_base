@@ -11,6 +11,7 @@ include( ${JMSD_FEES_CMAKE_SETTINGS_PATH}/fees-first-set-compiler-settings.cmake
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
+	${fles_first_DEPENDENCY_DIRS}
 	${JMSD_FEES_SOURCE_ROOT_PATH}/fees_first_sources/sources )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
@@ -43,7 +44,8 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	"" )
+	${fles_first_DEPENDENCY_LIBS}
+	fles_first )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 

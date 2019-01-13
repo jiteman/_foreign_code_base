@@ -10,7 +10,7 @@ namespace fles {
 
 class JMSD_FLES_FIRST_SHARED_INTERFACE Fles_first_class {
 
-public:	
+public:
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
@@ -18,21 +18,21 @@ public:
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 public:
-	virtual ~Fles_first_class() noexcept;
+	virtual ~Fles_first_class() noexcept = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Fles_first_class() noexcept;
+	Fles_first_class() noexcept = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Fles_first_class( const Fles_first_class &another ) noexcept;
-	const Fles_first_class &operator =( const Fles_first_class &another ) noexcept;
+	Fles_first_class( const Fles_first_class &another ) noexcept = delete;
+	const Fles_first_class &operator =( const Fles_first_class &another ) noexcept = delete;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Fles_first_class( Fles_first_class &&another ) noexcept;
-	Fles_first_class &operator =( Fles_first_class &&another ) noexcept;
+	Fles_first_class( Fles_first_class &&another ) noexcept = delete;
+	Fles_first_class &operator =( Fles_first_class &&another ) noexcept = delete;
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 private:
