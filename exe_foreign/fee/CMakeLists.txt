@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( fee C CXX )
 
 
-set( JMSD_FEE_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/fee_sources )
+set( JMSD_FEE_SOURCE_ROOT_PATH ${JMSD_EXE_FOREIGN_SOURCE_ROOT_PATH}/fee_sources )
 set( JMSD_FEE_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_fee_cmake_settings )
 
 
@@ -15,13 +15,14 @@ include( ${JMSD_FEE_CMAKE_SETTINGS_PATH}/fee-main-set-compiler-settings.cmake )
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
+	${fle_DEPENDENCY_DIRS}
 	${JMSD_FEE_SOURCE_ROOT_PATH}/sources )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 ## this project headers and sources enumeration section
-file( GLOB_RECURSE header_and_source_files ${JMSD_FLE_SOURCE_ROOT_PATH}/sources/*.h* ${JMSD_FLE_SOURCE_ROOT_PATH}/sources/*.c* )
+file( GLOB_RECURSE header_and_source_files ${JMSD_FEE_SOURCE_ROOT_PATH}/sources/*.h* ${JMSD_FEE_SOURCE_ROOT_PATH}/sources/*.c* )
 add_executable( ${PROJECT_NAME} ${header_and_source_files} )
 
 
@@ -45,8 +46,7 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	"" )
-
+	fle )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
