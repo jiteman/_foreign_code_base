@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( fles )
+project( google_test_and_mock )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )

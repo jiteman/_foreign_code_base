@@ -21,6 +21,31 @@ file( GLOB_RECURSE header_and_source_files
 	${JMSD_GTM_SOURCE_ROOT_PATH}/googletest/include/*.h*
 	${JMSD_GTM_SOURCE_ROOT_PATH}/googletest/src/*.h*
 	${JMSD_GTM_SOURCE_ROOT_PATH}/googletest/src/*.c* )
+
+# set( JMSD_GTM_TEST_PUMPS_TO_REMOVE "gtest-param-test.h.pump" )
+# JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "gtest-param-test.h.pump" )
+
+set( file_name_to_remove "gtest-param-test.h.pump" )
+set( found_file_indicies "" )
+
+foreach( file_path ${in_list} )
+	string( FIND ${file_path} ${file_name_to_remove} found_index )
+
+	if( NOT found_index EQUAL -1 )
+		list( APPEND found_file_indicies ${found_index} )
+	endif()
+endforeach()
+
+list( LENGTH found_file_indicies index_quantity )
+
+if( index_quantity GREATER 0 )
+	list( REVERSE found_file_indicies )
+
+	foreach( file_index ${found_file_indicies} )
+		list( REMOVE_AT ${${in_out_list}} ${file_index} )
+	endforeach()
+endif()
+
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 

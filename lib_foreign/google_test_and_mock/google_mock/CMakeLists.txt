@@ -1,31 +1,31 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( fles_first C CXX )
+project( google_mock C CXX )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
-include( ${JMSD_FLES_CMAKE_SETTINGS_PATH}/fles-first-set-compiler-settings.cmake )
+include( ${JMSD_GTM_CMAKE_SETTINGS_PATH}/gtm-mock-set-compiler-settings.cmake )
 
 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
-	${JMSD_FLES_SOURCE_ROOT_PATH}/fles_first_sources/sources )
+	${JMSD_GTM_SOURCE_ROOT_PATH}/googlemock/include )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files
-	${JMSD_FLES_SOURCE_ROOT_PATH}/fles_first_sources/sources/*.h*
-	${JMSD_FLES_SOURCE_ROOT_PATH}/fles_first_sources/sources/*.c* )
+	${JMSD_GTM_SOURCE_ROOT_PATH}/googlemock/include/*.h*
+	${JMSD_GTM_SOURCE_ROOT_PATH}/googlemock/src/*.c* )
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	-DJMSD_FLES_FIRST_SHARED_INTERFACE_INTERNAL )
+	"" )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
