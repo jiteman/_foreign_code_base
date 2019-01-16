@@ -13,7 +13,7 @@ add_subdirectory( fle )
 add_subdirectory( fles )
 add_subdirectory( poco )
 add_subdirectory( google_test_and_mock )
-# add_subdirectory( cpp_unit )
+add_subdirectory( cpp_unit )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
