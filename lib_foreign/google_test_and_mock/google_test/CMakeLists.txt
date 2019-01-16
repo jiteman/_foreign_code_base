@@ -15,6 +15,8 @@ set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
+include_directories( ${JMSD_GTM_SOURCE_ROOT_PATH}/googletest )
+
 
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files
