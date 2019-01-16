@@ -4,7 +4,7 @@ project( poco_foundation_lib C CXX )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
-include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/macroses/poco-macroses.cmake )
+
 
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-foundation-set-compiler-settings.cmake )
 
@@ -20,18 +20,9 @@ include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/*.c* )
 
-set( UNIPLATFORM_FILES_TO_REMOVE_HEADER_ONLY "Platform" )
-set( UNIPLATFORM_FILES_TO_REMOVE_HEADER_AND_SOURCE
-	"DirectoryIterator;Environment;File;FileStream;FPEnvironment;LogFile;Mutex;NamedEvent;NamedMutex;Path;PipeImpl;Process;RWLock;Thread;SharedLibrary;SharedMemory"
-)
-set( UNIPLATFORM_FILE_TO_REMOVE_SOURCE_ONLY "Timezone" )
-
-# message( STATUS "[POCO] file list before: " ${header_and_source_files} )
-# message( STATUS "[POCO] file list processing..." )
-JMSD_REMOVE_PLATFORM_HEADER_FILES_FOR_POCO( header_and_source_files UNIPLATFORM_FILES_TO_REMOVE_HEADER_ONLY "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include/Poco" )
-JMSD_REMOVE_PLATFORM_HEADER_FILES_FOR_POCO( header_and_source_files UNIPLATFORM_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include/Poco" )
-JMSD_REMOVE_PLATFORM_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files UNIPLATFORM_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src" )
-JMSD_REMOVE_PLATFORM_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files UNIPLATFORM_FILE_TO_REMOVE_SOURCE_ONLY "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src" )
+set( JMSD_POCO_FOUNDATION_FILES_TO_REMOVE
+	"DirectoryIterator;Environment;File;FileStream;FPEnvironment;LogFile;Mutex;NamedEvent;NamedMutex;Path;PipeImpl;Platform;Process;RWLock;Thread;SharedLibrary;SharedMemory;Timezone" )
+JMSD_REMOVE_PLATFORM_FILES_FOR_POCO( header_and_source_files JMSD_POCO_FOUNDATION_FILES_TO_REMOVE )
 
 set( PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "AndroidLogChannel;EventLogChannel;SyslogChannel;WindowsConsoleChannel" )
 
@@ -44,10 +35,7 @@ else()
 	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
-JMSD_REMOVE_HEADER_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include/Poco" )
-JMSD_REMOVE_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src" )
-
-# message( STATUS "[POCO] file list after: " ${header_and_source_files} )
+JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE )
 
 if( WIN32 )
 	JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/pocomsg.mc )

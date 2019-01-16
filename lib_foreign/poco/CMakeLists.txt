@@ -9,6 +9,8 @@ include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
 set( JMSD_POCO_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/poco )
 set( JMSD_POCO_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_poco_cmake_settings )
 
+include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/macroses/poco-functions-and-macroses.cmake )
+
 
 add_subdirectory( poco_foundation )
 add_subdirectory( poco_json )

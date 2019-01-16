@@ -4,7 +4,7 @@ project( poco_util_lib C CXX )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
-include( ${JMSD_CMAKE_SETTINGS_PATH}/macroses/macroses.cmake )
+
 
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-util-set-compiler-settings.cmake )
 
@@ -35,8 +35,10 @@ else()
 	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 endif()
 
-JMSD_REMOVE_HEADER_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Util/include/Poco" )
-JMSD_REMOVE_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Util/src" )
+JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE )
+
+# JMSD_REMOVE_HEADER_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Util/include/Poco" )
+# JMSD_REMOVE_CXX_SOURCE_FILES_FOR_POCO( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "${JMSD_POCO_SOURCE_ROOT_PATH}/Util/src" )
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
