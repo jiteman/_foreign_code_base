@@ -27,6 +27,10 @@ set( JMSD_CU_FILES_TO_REMOVE
 	"CommandLineParser;DllPlugInTester;TestPlugInInterface" )
 JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_CU_FILES_TO_REMOVE )
 
+if ( UNIX )
+	JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "DllMain" )
+endif()
+
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
