@@ -24,14 +24,11 @@ file( GLOB_RECURSE header_and_source_files
 	${JMSD_GTM_SOURCE_ROOT_PATH}/googletest/src/*.h*
 	${JMSD_GTM_SOURCE_ROOT_PATH}/googletest/src/*.c* )
 
-# JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "gtest-param-test.h.pump" )
-# JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "gtest-param-util-generated.h.pump" )
-JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "gtest-type-util.h.pump" )
-JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "gtest-all.cc" )
-
 set( JMSD_GTM_TEST_FILES_TO_REMOVE
 	"gtest-param-test.h.pump"
-	"gtest-param-util-generated.h.pump" )
+	"gtest-param-util-generated.h.pump"
+	"gtest-type-util.h.pump"
+	"gtest-all.cc" )
 JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_GTM_TEST_FILES_TO_REMOVE )
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
@@ -56,8 +53,14 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 
 ## project target section
-set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	"pthread" )
+if ( UNIX )
+	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+		"pthread" )
+else()
+	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+		"" )
+endif()
+
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
