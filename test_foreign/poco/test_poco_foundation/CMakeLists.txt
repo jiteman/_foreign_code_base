@@ -24,9 +24,11 @@ include_directories( ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src )
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.c* )
 
-#set( JMSD_POCO_FOUNDATION_FILES_TO_REMOVE
-#	"DirectoryIterator;Environment;File;FileStream;FPEnvironment;LogFile;Mutex;NamedEvent;NamedMutex;Path;PipeImpl;Platform;Process;RWLock;Thread;SharedLibrary;SharedMemory;Timezone" )
-#JMSD_REMOVE_PLATFORM_FILES_FOR_POCO( header_and_source_files JMSD_POCO_FOUNDATION_FILES_TO_REMOVE )
+if( UNIX )
+	set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE
+		"WinCEDriver;WinDriver" )
+	JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE )
+endif()
 
 #set( PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "AndroidLogChannel;EventLogChannel;SyslogChannel;WindowsConsoleChannel" )
 

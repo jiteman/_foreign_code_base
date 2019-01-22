@@ -6,7 +6,7 @@ if ( UNIX )
 	## list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-" ) #
 	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-unused-parameter" ) # unused parameter ''
 	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-implicit-fallthrough" ) # this statement may fall through
-	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-sign-compare" ) # comparison of integer expressions of different signedness: '' and ' {aka ''}
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-sign-compare" ) # comparison of integer expressions of different signedness: '' and ' {aka ''}
 	# list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-vla" ) # ISO C++ forbids variable length array ''
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
