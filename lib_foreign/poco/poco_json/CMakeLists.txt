@@ -12,7 +12,7 @@ include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-json-set-compiler-settings.cmake 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	# ${JMSD_PLATFORM_SOURCES}
-	{poco_foundation_lib_$DEPENDENCY_DIRS}
+	${poco_foundation_lib_DEPENDENCY_DIRS}
 	${JMSD_POCO_SOURCE_ROOT_PATH}/JSON/include )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )

@@ -24,28 +24,15 @@ include_directories( ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src )
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.c* )
 
-if( UNIX )
-	set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE
-		"WinCEDriver;WinDriver" )
-	JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE )
-endif()
+set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "NamedTuple;TestApp;WinDriver;WinCEDriver" )
 
-#set( PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "AndroidLogChannel;EventLogChannel;SyslogChannel;WindowsConsoleChannel" )
-
-#if ( UNIX )
-#	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "SyslogChannel" )
+#if( UNIX )
 #elseif( WIN32 )
-#	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "EventLogChannel" )
-#	list( REMOVE_ITEM PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WindowsConsoleChannel" )
 #else()
 #	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
 #endif()
 
-#JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE )
-
-#if( WIN32 )
-#	JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/pocomsg.mc )
-#endif()
+JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE )
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 

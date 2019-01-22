@@ -7,6 +7,7 @@ if ( WIN32 )
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4100" ) # '': unreferenced formal parameter
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4275" ) # non dll-interface class '' used as base for dll-interface class ''
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4267" ) # 'initializing': conversion from '' to '', possible loss of data
+	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4365" ) # '': conversion from '' to '', signed/unsigned mismatch
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4668" ) # '' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
