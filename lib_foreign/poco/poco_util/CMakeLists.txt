@@ -46,7 +46,6 @@ add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
 	-DUtil_EXPORTS
-	-DPOCO_NO_AUTOMATIC_LIBS
 	${poco_foundation_lib_LINK_DEFINITIONS}
 	${poco_json_lib_LINK_DEFINITIONS}
 	${poco_xml_lib_LINK_DEFINITIONS} )

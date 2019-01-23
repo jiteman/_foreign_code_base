@@ -26,7 +26,6 @@ add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
 	-DXML_EXPORTS
-	-DPOCO_NO_AUTOMATIC_LIBS
 	-DXML_NS
 	-DXML_DTD
 	-DHAVE_EXPAT_CONFIG_H
