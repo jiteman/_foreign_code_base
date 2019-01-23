@@ -1,28 +1,30 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( fee C CXX )
+project( te_poco C CXX )
 
 
-set( JMSD_FEE_SOURCE_ROOT_PATH ${JMSD_FOREIGN_EXE_SOURCE_PATH}/fee_sources )
-set( JMSD_FEE_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_fee_cmake_settings )
+set( JMSD_TE_POCO_SOURCE_ROOT_PATH ${JMSD_FOREIGN_TEST_EXE_SOURCE_PATH}/te_poco )
+set( JMSD_TE_POCO_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_te_poco_cmake_settings )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
-include( ${JMSD_FEE_CMAKE_SETTINGS_PATH}/fee-main-set-compiler-settings.cmake )
+
+include( ${JMSD_TE_POCO_CMAKE_SETTINGS_PATH}/te-poco-main-set-compiler-settings.cmake )
 
 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
-	${fle_DEPENDENCY_DIRS}
-	${JMSD_FEE_SOURCE_ROOT_PATH}/sources )
+	${test_poco_foundation_DEPENDENCY_DIRS} )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
+include_directories( ${JMSD_TE_POCO_SOURCE_ROOT_PATH}/sources )
+
 
 ## this project headers and sources enumeration section
-file( GLOB_RECURSE header_and_source_files ${JMSD_FEE_SOURCE_ROOT_PATH}/sources/*.h* ${JMSD_FEE_SOURCE_ROOT_PATH}/sources/*.c* )
+file( GLOB_RECURSE header_and_source_files ${JMSD_TE_POCO_SOURCE_ROOT_PATH}/sources/*.h* ${JMSD_TE_POCO_SOURCE_ROOT_PATH}/sources/*.c* )
 add_executable( ${PROJECT_NAME} ${header_and_source_files} )
 
 
@@ -46,7 +48,8 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	fle )
+	test_poco_foundation_lib
+	${test_poco_foundation_lib_DEPENDENCY_LIBS} )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 

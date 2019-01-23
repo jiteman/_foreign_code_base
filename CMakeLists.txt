@@ -18,7 +18,7 @@ set( JMSD_FOREIGN_TEST_SOURCE_PATH ${PROJECT_SOURCE_DIR}/test_foreign_sources )
 add_subdirectory( lib_foreign )
 add_subdirectory( exe_foreign )
 add_subdirectory( test_foreign )
-#add_subdirectory( test_exe_foreign )
+add_subdirectory( test_exe_foreign )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
