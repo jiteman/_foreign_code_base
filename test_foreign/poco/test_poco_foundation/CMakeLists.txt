@@ -24,13 +24,14 @@ include_directories( ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src )
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.c* )
 
-set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "NamedTuple;TestApp;WinDriver;WinCEDriver" )
+set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "TestApp;WinDriver;WinCEDriver" )
 
-#if( UNIX )
-#elseif( WIN32 )
-#else()
-#	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
-#endif()
+if( UNIX )
+elseif( WIN32 )
+	list( APPEND JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "TuplesTest;NamedTuplesTest" )
+else()
+	message( SEND_ERROR "[JMSD] ${PROJECT_NAME} platform is not supported." )
+endif()
 
 JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE )
 
