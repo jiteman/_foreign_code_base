@@ -16,7 +16,7 @@ include( ${JMSD_TE_POCO_CMAKE_SETTINGS_PATH}/te-poco-main-set-compiler-settings.
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
-	${test_poco_foundation_DEPENDENCY_DIRS} )
+	${test_poco_foundation_lib_DEPENDENCY_DIRS} )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
