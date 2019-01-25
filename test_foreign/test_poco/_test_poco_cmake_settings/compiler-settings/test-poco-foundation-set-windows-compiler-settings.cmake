@@ -6,19 +6,12 @@ if ( WIN32 )
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4100" ) # '': unreferenced formal parameter
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4127" ) # conditional expression is constant
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4189" ) # '': local variable is initialized but not referenced
-	#list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4242" ) # '': conversion from '' to '', possible loss of data
-	#list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4244" ) # '': conversion from '' to '', possible loss of data
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4245" ) # 'initializing': conversion from '' to '', signed/unsigned mismatch
-	#list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4266" ) # '': no override available for virtual member function from base ''; function is hidden
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4287" ) # '': unsigned/negative constant mismatch
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4310" ) # cast truncates constant value
-	#list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4324" ) # '': structure was padded due to alignment specifier
-	#list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4388" ) # '<': signed/unsigned mismatch
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4389" ) # '==': signed/unsigned mismatch
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4456" ) # declaration of 'b' hides previous local declaration
-	#list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4702" ) # unreachable code
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4834" ) # discarding return value of function with 'nodiscard' attribute
-	#list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd5045" ) # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
 

@@ -12,18 +12,23 @@ include( ${JMSD_TEST_POCO_CMAKE_SETTINGS_PATH}/test-poco-foundation-set-compiler
 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
-	# ${JMSD_PLATFORM_SOURCES}
+	${JMSD_PLATFORM_SOURCES}
 	${poco_cppunit_lib_DEPENDENCY_DIRS}
 	${poco_foundation_lib_DEPENDENCY_DIRS}
-	${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src )
+	${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src
+	${JMSD_FOREIGN_TEST_SOURCE_PATH}/test_poco/test_poco_foundation/sources )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 ## this project headers and sources enumeration section
-file( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.c* )
+file( GLOB_RECURSE header_and_source_files
+	${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.h*
+	${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/testsuite/src/*.c*
+	${JMSD_FOREIGN_TEST_SOURCE_PATH}/test_poco/test_poco_foundation/sources/*.h*
+	${JMSD_FOREIGN_TEST_SOURCE_PATH}/test_poco/test_poco_foundation/sources/*.c* )
 
-set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "TestApp;WinDriver;WinCEDriver" )
+set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "TestApp;Driver" )
 
 if( UNIX )
 elseif( WIN32 )
