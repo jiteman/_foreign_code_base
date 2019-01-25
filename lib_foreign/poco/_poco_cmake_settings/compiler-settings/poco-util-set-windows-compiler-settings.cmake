@@ -7,7 +7,6 @@ if ( WIN32 )
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4191" ) # 'reinterpret_cast': unsafe conversion from '' to ''. Calling this function through the result pointer may cause your program to fail
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4266" ) # '': no override available for virtual member function from base ''; function is hidden
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd4388" ) # '<': signed/unsigned mismatch
-	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "/wd5045" ) # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
 
