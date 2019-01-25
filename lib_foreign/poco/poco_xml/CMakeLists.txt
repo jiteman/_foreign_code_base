@@ -6,6 +6,8 @@ project( poco_xml_lib C CXX )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
 
+set( JMSD_POCO_XML_SOURCE_PATH ${JMSD_POCO_SOURCE_ROOT_PATH}/XML )
+
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-xml-set-compiler-settings.cmake )
 
 
@@ -13,13 +15,13 @@ include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-xml-set-compiler-settings.cmake )
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	# ${JMSD_PLATFORM_SOURCES}
 	${poco_foundation_lib_DEPENDENCY_DIRS}
-	${JMSD_POCO_SOURCE_ROOT_PATH}/XML/include )
+	${JMSD_POCO_XML_SOURCE_PATH}/include )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 ## this project headers and sources enumeration section
-file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/XML/include/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/XML/src/*.c* )
+file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_XML_SOURCE_PATH}/include/*.h* ${JMSD_POCO_XML_SOURCE_PATH}/src/*.c* )
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 

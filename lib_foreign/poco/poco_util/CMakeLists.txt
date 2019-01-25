@@ -6,6 +6,8 @@ project( poco_util_lib C CXX )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
 
+set( JMSD_POCO_UTIL_SOURCE_PATH ${JMSD_POCO_SOURCE_ROOT_PATH}/Util )
+
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-util-set-compiler-settings.cmake )
 
 
@@ -15,13 +17,13 @@ set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${poco_foundation_lib_DEPENDENCY_DIRS}
 	${poco_xml_lib_DEPENDENCY_DIRS}
 	${poco_json_lib_DEPENDENCY_DIRS}
-	${JMSD_POCO_SOURCE_ROOT_PATH}/Util/include )
+	${JMSD_POCO_UTIL_SOURCE_PATH}/include )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 # this project headers and sources enumeration section
-file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Util/include/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Util/src/*.c* )
+file ( GLOB_RECURSE header_and_source_files ${JMSD_POCO_UTIL_SOURCE_PATH}/include/*.h* ${JMSD_POCO_UTIL_SOURCE_PATH}/src/*.c* )
 
 set( PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE "WinRegistryConfiguration;WinRegistryKey;WinService" )
 

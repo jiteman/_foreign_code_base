@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( cpp_unit C CXX )
 
 
-set( JMSD_CU_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/cppunit )
+set( JMSD_CU_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/cppunit )
 set( JMSD_CU_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_cu_cmake_settings )
 
 

@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( catch_2 C CXX )
 
 
-set( JMSD_CATCH_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/catch2 )
+set( JMSD_CATCH_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/catch2 )
 set( JMSD_CATCH_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_catch_cmake_settings )
 
 

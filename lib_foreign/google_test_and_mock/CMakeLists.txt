@@ -6,7 +6,7 @@ project( google_test_and_mock )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
 
 
-set( JMSD_GTM_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/google_test_and_mock )
+set( JMSD_GTM_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/google_test_and_mock )
 set( JMSD_GTM_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_gtm_cmake_settings )
 
 

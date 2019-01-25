@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( fle C CXX )
 
 
-set( JMSD_FLE_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/fle_sources )
+set( JMSD_FLE_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/fle_sources )
 set( JMSD_FLE_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_fle_cmake_settings )
 
 

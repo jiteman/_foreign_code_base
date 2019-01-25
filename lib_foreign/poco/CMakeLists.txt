@@ -6,7 +6,7 @@ project( poco_libraries )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
 
 
-set( JMSD_POCO_SOURCE_ROOT_PATH ${JMSD_LIB_FOREIGN_SOURCE_ROOT_PATH}/poco )
+set( JMSD_POCO_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/poco )
 set( JMSD_POCO_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_poco_cmake_settings )
 
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/macroses/poco-functions-and-macroses.cmake )
@@ -21,7 +21,7 @@ add_subdirectory( poco_seven_zip )
 add_subdirectory( poco_zip )
 
 add_subdirectory( poco_cppunit )
-# add_subdirectory( poco_cppunit_facade )
+add_subdirectory( poco_cppunit_facade )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
