@@ -6,19 +6,21 @@ project( poco_foundation_lib C CXX )
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
 
+set( JMSD_POCO_FOUNDATION_SOURCE_PATH ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation )
+
 include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/poco-foundation-set-compiler-settings.cmake )
 
 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	# ${JMSD_PLATFORM_SOURCES}
-	${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include )
+	${JMSD_POCO_FOUNDATION_SOURCE_PATH}/include )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 ## this project headers and sources enumeration section
-file( GLOB_RECURSE header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/include/*.h* ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/*.c* )
+file( GLOB_RECURSE header_and_source_files ${JMSD_POCO_FOUNDATION_SOURCE_PATH}/include/*.h* ${JMSD_POCO_FOUNDATION_SOURCE_PATH}/src/*.c* )
 
 set( JMSD_POCO_FOUNDATION_FILES_TO_REMOVE
 	"DirectoryIterator;Environment;File;FileStream;FPEnvironment;LogFile;Mutex;NamedEvent;NamedMutex;Path;PipeImpl;Platform;Process;RWLock;Thread;SharedLibrary;SharedMemory;Timezone" )
@@ -39,7 +41,7 @@ endif()
 JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files PLATFORM_SPECIC_FILES_TO_REMOVE_HEADER_AND_SOURCE )
 
 if( WIN32 )
-	JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_SOURCE_ROOT_PATH}/Foundation/src/pocomsg.mc )
+	JMSD_MICROSOFT_MESSAGE_COMPILER( header_and_source_files ${JMSD_POCO_FOUNDATION_SOURCE_PATH}/src/pocomsg.mc )
 endif()
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
