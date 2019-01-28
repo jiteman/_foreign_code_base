@@ -1,4 +1,4 @@
-JMSD_CMAKE_CURRENT_FILE_IN( "${JMSD_FOREIGN_COMPONENT_BASE_NAME}-common-set-windows-compiler-settings.cmake" )
+JMSD_CMAKE_CURRENT_FILE_IN( "${JMSD_FOREING_COMPONENT_BASE_NAME}-common-set-windows-compiler-settings.cmake" )
 
 if ( WIN32 )
 	## set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
@@ -15,4 +15,4 @@ else()
 
 endif()
 
-JMSD_CMAKE_CURRENT_FILE_OUT( "${JMSD_FOREIGN_COMPONENT_BASE_NAME}-common-set-windows-compiler-settings.cmake" )
+JMSD_CMAKE_CURRENT_FILE_OUT( "${JMSD_FOREING_COMPONENT_BASE_NAME}-common-set-windows-compiler-settings.cmake" )

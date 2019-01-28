@@ -8,6 +8,7 @@ include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
 
 #add_subdirectory( fle )
 #add_subdirectory( fles )
+add_subdirectory( test_cppunit )
 add_subdirectory( test_poco )
 #add_subdirectory( google_test_and_mock )
 #add_subdirectory( cpp_unit )
