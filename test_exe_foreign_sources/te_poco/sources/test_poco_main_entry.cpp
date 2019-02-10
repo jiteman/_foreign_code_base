@@ -1,5 +1,10 @@
 
 #include "FoundationTestSuite.h"
+//#include "JSONTestSuite.h"
+//#include "XMLTestSuite.h"
+//#include "UtilTestSuite.h"
+//#include "ZipTestSuite.h"
+
 
 #include "cppunit/TestRunner.h"
 #include "cppunit/TestResult.h"
@@ -12,8 +17,7 @@
 #include <iostream>
 
 
-int
-main( int const argc, char const *const argv[] ) {
+int main( int const argc, char const *const argv[] ) {
 	::std::string const testPath = ( argc > 1 ) ? argv[ 1 ] : "";
 
 	// Create the event manager and test controller
@@ -31,6 +35,10 @@ main( int const argc, char const *const argv[] ) {
 	::CppUnit::TestRunner runner;
 	//runner.addTest( ::CppUnit::TestFactoryRegistry::getRegistry().makeTest() );
 	runner.addTest( ::FoundationTestSuite::suite() );
+	//runner.addTest( ::JSONTestSuite::suite() );
+	//runner.addTest( ::XMLTestSuite::suite() );
+	//runner.addTest( ::UtilTestSuite::suite() );
+	//runner.addTest( ::ZipTestSuite::suite() );
 
 	try {
 		::std::cout << "Running "  <<  testPath;
