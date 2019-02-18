@@ -11,6 +11,7 @@ add_subdirectory( fles )
 
 add_subdirectory( google_test_and_mock )
 add_subdirectory( cpp_unit )
+add_subdirectory( cpp_unit_clocker )
 add_subdirectory( catch_2 )
 add_subdirectory( cpp_unit_lite )
 
