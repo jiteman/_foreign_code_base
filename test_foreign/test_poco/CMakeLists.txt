@@ -15,12 +15,12 @@ include( ${JMSD_POCO_CMAKE_SETTINGS_PATH}/macroses/poco-functions-and-macroses.c
 
 
 add_subdirectory( test_poco_foundation )
-#	add_subdirectory( test_poco_json )
-#	add_subdirectory( test_poco_xml )
-#	add_subdirectory( test_poco_util )
+add_subdirectory( test_poco_json )
+add_subdirectory( test_poco_xml )
+add_subdirectory( test_poco_util )
 
 ## add_subdirectory( poco_seven_zip )
-#	add_subdirectory( test_poco_zip )
+add_subdirectory( test_poco_zip )
 
 
 include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )

@@ -45,7 +45,7 @@ add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	-DJMSD_TEST_POCO_JSON_SHARED_INTERFACE_INTERNAL
+	-DJMSD_TEST_POCO_ZIP_SHARED_INTERFACE_INTERNAL
 	${poco_cppunit_facade_lib_LINK_DEFINITIONS}
 	${poco_foundation_lib_LINK_DEFINITIONS}
 	${poco_zip_lib_LINK_DEFINITIONS} )

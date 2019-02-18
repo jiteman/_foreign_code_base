@@ -1,9 +1,9 @@
 
 #include "FoundationTestSuite.h"
-//#include "JSONTestSuite.h"
-//#include "XMLTestSuite.h"
-//#include "UtilTestSuite.h"
-//#include "ZipTestSuite.h"
+#include "JSONTestSuite.h"
+#include "XMLTestSuite.h"
+#include "UtilTestSuite.h"
+#include "ZipTestSuite.h"
 
 
 #include "cppunit/TestRunner.h"
@@ -35,10 +35,10 @@ int main( int const argc, char const *const argv[] ) {
 	::CppUnit::TestRunner runner;
 	//runner.addTest( ::CppUnit::TestFactoryRegistry::getRegistry().makeTest() );
 	runner.addTest( ::FoundationTestSuite::suite() );
-	//runner.addTest( ::JSONTestSuite::suite() );
-	//runner.addTest( ::XMLTestSuite::suite() );
-	//runner.addTest( ::UtilTestSuite::suite() );
-	//runner.addTest( ::ZipTestSuite::suite() );
+	runner.addTest( ::JSONTestSuite::suite() );
+	runner.addTest( ::XMLTestSuite::suite() );
+	runner.addTest( ::UtilTestSuite::suite() );
+	runner.addTest( ::ZipTestSuite::suite() );
 
 	try {
 		::std::cout << "Running "  <<  testPath;
