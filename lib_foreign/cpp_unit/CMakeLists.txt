@@ -48,8 +48,8 @@ add_definitions( "${${PROJECT_NAME}_BUILD_DEFINITIONS_VAR}" )
 
 ## required to be able to be linked into shared libraries.
 set_target_properties( ${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON )
-set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 0.1.0 )
-set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
+set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 1.14.0 )
+set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 1.14 )
 
 
 ## project target section
