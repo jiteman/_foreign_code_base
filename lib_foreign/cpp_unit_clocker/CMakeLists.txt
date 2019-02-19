@@ -24,12 +24,12 @@ include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 ## this project headers and sources enumeration section
 file( GLOB_RECURSE header_and_source_files ${JMSD_CUC_SOURCE_ROOT_PATH}/examples/ClockerPlugIn/*.h* ${JMSD_CUC_SOURCE_ROOT_PATH}/examples/ClockerPlugIn/*.c* )
 
-set( JMSD_CU_FILES_TO_REMOVE
-	"CommandLineParser;DllPlugInTester;TestPlugInInterface" )
-JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_CU_FILES_TO_REMOVE )
+set( JMSD_CUC_FILES_TO_REMOVE
+	"" )
+JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_CUC_FILES_TO_REMOVE )
 
 if ( UNIX )
-	JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "DllMain" )
+	JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "WinNtTimer" )
 endif()
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
