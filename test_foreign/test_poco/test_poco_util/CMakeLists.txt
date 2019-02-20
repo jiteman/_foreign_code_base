@@ -32,6 +32,7 @@ file( GLOB_RECURSE header_and_source_files
 set( JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "TestApp;Driver" )
 
 if( UNIX )
+	list( APPEND JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "WinConfigurationTest;WinRegistryTest;WindowsTestSuite" )
 elseif( WIN32 )
 	list( APPEND JMSD_TEST_POCO_FOUNDATION_FILES_TO_REMOVE "TuplesTest;NamedTuplesTest" )
 else()
