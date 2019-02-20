@@ -13,6 +13,9 @@
 
 #include "cppunit/CompilerOutputter.h"
 
+#include "ClockerModel.h"
+#include "ClockerListener.h"
+//#include "ClockerXmlHook.h"
 
 #include <iostream>
 
@@ -25,6 +28,12 @@ int main( int const argc, char const *const argv[] ) {
 
 	// Add a listener that colllects test result
 	::CppUnit::TestResultCollector result;
+
+	ClockerModel the_model;
+	ClockerListener the_dumper( &the_model, true, true );
+	//	ClockerXmlHook the_xmlHook( the_model );
+
+	controller.addListener( &the_dumper );
 	controller.addListener( &result );
 
 	// Add a listener that print dots as test run.
@@ -35,13 +44,20 @@ int main( int const argc, char const *const argv[] ) {
 	::CppUnit::TestRunner runner;
 	//runner.addTest( ::CppUnit::TestFactoryRegistry::getRegistry().makeTest() );
 	runner.addTest( ::FoundationTestSuite::suite() );
-	runner.addTest( ::JSONTestSuite::suite() );
-	runner.addTest( ::XMLTestSuite::suite() );
-	runner.addTest( ::UtilTestSuite::suite() );
-	runner.addTest( ::ZipTestSuite::suite() );
+	//	runner.addTest( ::JSONTestSuite::suite() );
+	//	runner.addTest( ::XMLTestSuite::suite() );
+	//	runner.addTest( ::UtilTestSuite::suite() );
+	//	runner.addTest( ::ZipTestSuite::suite() );
 
 	try {
-		::std::cout << "Running "  <<  testPath;
+		::std::cout << "Running";
+
+		if ( !testPath.empty() ) {
+			::std::cout << " " << testPath;
+		}
+
+		::std::cout << ::std::endl;
+
 		runner.run( controller, testPath );
 		::std::cerr << ::std::endl;
 

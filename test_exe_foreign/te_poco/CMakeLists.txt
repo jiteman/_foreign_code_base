@@ -16,6 +16,7 @@ include( ${JMSD_TE_POCO_CMAKE_SETTINGS_PATH}/te-poco-main-set-compiler-settings.
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
+	${cpp_unit_clocker_DEPENDENCY_DIRS}
 	${test_poco_foundation_lib_DEPENDENCY_DIRS}
 	${test_poco_json_lib_DEPENDENCY_DIRS}
 	${test_poco_xml_lib_DEPENDENCY_DIRS}
@@ -34,6 +35,7 @@ add_executable( ${PROJECT_NAME} ${header_and_source_files} )
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
+	${cpp_unit_clocker_LINK_DEFINITIONS}
 	${test_poco_foundation_lib_LINK_DEFINITIONS}
 	${test_poco_json_lib_LINK_DEFINITIONS}
 	${test_poco_xml_lib_LINK_DEFINITIONS}
@@ -56,6 +58,8 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+	cpp_unit_clocker
+	${cpp_unit_clocker_DEPENDENCY_LIBS}
 	test_poco_foundation_lib
 	${test_poco_foundation_lib_DEPENDENCY_LIBS}
 	test_poco_json_lib

@@ -32,12 +32,13 @@ file( GLOB_RECURSE header_and_source_files
 	${JMSD_CUC_ADDITIONAL_SOURCE_PATH}/sources/*.c* )
 
 set( JMSD_CUC_FILES_TO_REMOVE
-	"" )
-JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_CUC_FILES_TO_REMOVE )
+	"ClockerPlugIn.cpp" )
 
 if ( UNIX )
-	JMSD_REMOVE_FILE_FROM_THE_LIST( header_and_source_files "WinNtTimer" )
+	list( APPEND JMSD_CUC_FILES_TO_REMOVE "WinNtTimer" )
 endif()
+
+JMSD_REMOVE_FILES_FROM_THE_LIST( header_and_source_files JMSD_CUC_FILES_TO_REMOVE )
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
