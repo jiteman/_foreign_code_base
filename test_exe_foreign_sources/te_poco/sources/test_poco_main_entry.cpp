@@ -1,5 +1,5 @@
 
-#include "FoundationTestSuite.h"
+#include "suite_FoundationTest.h"
 #include "JSONTestSuite.h"
 #include "XMLTestSuite.h"
 #include "UtilTestSuite.h"
