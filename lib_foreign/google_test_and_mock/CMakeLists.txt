@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( google_test_and_mock )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
+JMSD_SHOW_PROJECT_GROUP_HEADER()
 
 
 set( JMSD_GTM_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/google_test_and_mock )
@@ -14,4 +14,4 @@ add_subdirectory( google_test )
 # add_subdirectory( google_mock )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
+JMSD_SHOW_PROJECT_GROUP_FOOTER()

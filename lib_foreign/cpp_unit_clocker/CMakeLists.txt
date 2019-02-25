@@ -3,13 +3,14 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( cpp_unit_clocker C CXX )
 
 
+JMSD_SHOW_PROJECT_HEADER()
+
+
 set( JMSD_CUC_SOURCE_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/cppunit )
 set( JMSD_CUC_ADDITIONAL_SOURCE_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/cpp_unit_clocker )
 set( JMSD_CUC_SOURCE_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/cppunit )
 set( JMSD_CUC_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_cuc_cmake_settings )
 
-
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
 include( ${JMSD_CUC_CMAKE_SETTINGS_PATH}/cuc-main-set-compiler-settings.cmake )
 
@@ -77,4 +78,4 @@ target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
 ## Expose public includes to other subprojects through cache variable.
 include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
+JMSD_SHOW_PROJECT_FOOTER()

@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( poco_libraries )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
+JMSD_SHOW_PROJECT_GROUP_HEADER()
 
 
 set( JMSD_POCO_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/poco )
@@ -24,4 +24,4 @@ add_subdirectory( poco_zip )
 add_subdirectory( poco_cppunit_facade )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
+JMSD_SHOW_PROJECT_GROUP_FOOTER()

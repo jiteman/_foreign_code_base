@@ -3,11 +3,12 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( fee C CXX )
 
 
+JMSD_SHOW_PROJECT_HEADER()
+
+
 set( JMSD_FEE_SOURCE_ROOT_PATH ${JMSD_FOREIGN_EXE_SOURCE_PATH}/fee_sources )
 set( JMSD_FEE_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_fee_cmake_settings )
 
-
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
 include( ${JMSD_FEE_CMAKE_SETTINGS_PATH}/fee-main-set-compiler-settings.cmake )
 
@@ -53,4 +54,4 @@ target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
 ## Expose public includes to other subprojects through cache variable.
 include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
+JMSD_SHOW_PROJECT_FOOTER()

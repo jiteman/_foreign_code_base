@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( fees )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
+JMSD_SHOW_PROJECT_GROUP_HEADER()
 
 
 set( JMSD_FEES_SOURCE_ROOT_PATH ${JMSD_FOREIGN_EXE_SOURCE_PATH}/fees_sources )
@@ -14,4 +14,4 @@ add_subdirectory( fees_first )
 add_subdirectory( fees_second )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
+JMSD_SHOW_PROJECT_GROUP_FOOTER()

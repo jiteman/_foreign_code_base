@@ -3,11 +3,11 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( te_poco C CXX )
 
 
+JMSD_SHOW_PROJECT_HEADER()
+
+
 set( JMSD_TE_POCO_SOURCE_ROOT_PATH ${JMSD_FOREIGN_TEST_EXE_SOURCE_PATH}/te_poco )
 set( JMSD_TE_POCO_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_te_poco_cmake_settings )
-
-
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
 
 include( ${JMSD_TE_POCO_CMAKE_SETTINGS_PATH}/te-poco-main-set-compiler-settings.cmake )
@@ -76,4 +76,4 @@ target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
 ## Expose public includes to other subprojects through cache variable.
 include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
+JMSD_SHOW_PROJECT_FOOTER()

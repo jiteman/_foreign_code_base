@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( fles )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
+JMSD_SHOW_PROJECT_GROUP_HEADER()
 
 
 set( JMSD_FLES_SOURCE_ROOT_PATH ${JMSD_FOREIGN_LIB_SOURCE_PATH}/fles_sources )
@@ -14,4 +14,4 @@ add_subdirectory( fles_first )
 add_subdirectory( fles_second )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
+JMSD_SHOW_PROJECT_GROUP_FOOTER()

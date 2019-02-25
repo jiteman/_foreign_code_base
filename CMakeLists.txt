@@ -3,7 +3,8 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( jmsd_foreign_code_base )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-header.cmake )
+JMSD_SHOW_PROJECT_GROUP_HEADER()
+
 
 set( JMSD_FOREIGN_EXE_PATH ${PROJECT_SOURCE_DIR}/exe_foreign )
 set( JMSD_FOREIGN_EXE_SOURCE_PATH ${PROJECT_SOURCE_DIR}/exe_foreign_sources )
@@ -21,4 +22,4 @@ add_subdirectory( test_foreign )
 add_subdirectory( test_exe_foreign )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-group-footer.cmake )
+JMSD_SHOW_PROJECT_GROUP_FOOTER()

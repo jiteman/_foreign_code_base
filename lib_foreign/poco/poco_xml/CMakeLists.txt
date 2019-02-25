@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( poco_xml_lib C CXX )
 
 
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
+JMSD_SHOW_PROJECT_HEADER()
 
 
 set( JMSD_POCO_XML_SOURCE_PATH ${JMSD_POCO_SOURCE_ROOT_PATH}/XML )
@@ -56,4 +56,4 @@ target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
 ## Expose public includes to other subprojects through cache variable.
 include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
+JMSD_SHOW_PROJECT_FOOTER()

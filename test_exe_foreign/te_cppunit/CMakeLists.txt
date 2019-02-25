@@ -3,11 +3,11 @@ cmake_minimum_required( VERSION 3.7.1 )
 project( te_cppunit C CXX )
 
 
+JMSD_SHOW_PROJECT_HEADER()
+
+
 set( JMSD_TE_CPPUNIT_SOURCE_PATH ${JMSD_FOREIGN_TEST_EXE_SOURCE_PATH}/te_cppunit )
 set( JMSD_TE_CPPUNIT_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_te_cppunit_cmake_settings )
-
-
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-header.cmake )
 
 
 include( ${JMSD_TE_CPPUNIT_CMAKE_SETTINGS_PATH}/te-cppunit-main-set-compiler-settings.cmake )
@@ -56,4 +56,4 @@ target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
 ## Expose public includes to other subprojects through cache variable.
 include( ${JMSD_CMAKE_SETTINGS_PATH}/set-expose-dependencies.cmake )
-include( ${JMSD_CMAKE_SETTINGS_PATH}/verbosity/project-footer.cmake )
+JMSD_SHOW_PROJECT_FOOTER()
